@@ -2,6 +2,7 @@ package com.example.mvvm.bindingAdapters
 
 import android.view.View
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvm.view.recycler.BaseAdapter
 import com.example.mvvm.viewmodel.PeopleViewModel
@@ -17,6 +18,7 @@ class BindingAdapters {
                     items?.let { adapter.setData(it) }
                 }
             }
+            recyclerView.layoutManager?.smoothScrollToPosition(recyclerView, RecyclerView.State(), recyclerView.adapter?.itemCount ?: 0)
         }
 
         @BindingAdapter("getItems")
