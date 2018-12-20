@@ -4,12 +4,13 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class RetrofitBuilder {
-
-    fun buildRetrofit() = Retrofit.Builder()
-        .baseUrl("https://swapi.co/api/")
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
-        .create(StarWarsApi::class.java)
+abstract class RetrofitBuilder {
+    companion object {
+        fun buildRetrofit(): StarWarsApi = Retrofit.Builder()
+            .baseUrl("https://swapi.co/api/")
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create(StarWarsApi::class.java)
+    }
 }
